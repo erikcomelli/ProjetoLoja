@@ -78,7 +78,7 @@ namespace ProjetoLoja.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "email/senha inválido(s)");
                     return View(model);
                 }
             }
