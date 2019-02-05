@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-IdentityTwo-E2A31E99-F50A-41D8-95F3-9989EE05667E</UserSecretsId>
-    <AssemblyName>ProjetoLoja</AssemblyName>
-    <RootNamespace>ProjetoLoja</RootNamespace>
+    <AssemblyName>ProjetoLoja.Web</AssemblyName>
+    <RootNamespace>ProjetoLoja.Web</RootNamespace>
   </PropertyGroup>
 
 
