@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjetoLoja.DI\ProjetoLoja.DI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="SiteResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

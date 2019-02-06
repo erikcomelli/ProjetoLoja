@@ -4,13 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjetoLoja.Data;
 using ProjetoLoja.Models;
 using ProjetoLoja.Services;
+using ProjetoLoja.DI;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjetoLoja
 {
@@ -41,6 +43,8 @@ namespace ProjetoLoja
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+
+            Bootstrap.Configure(services, Configuration.GetConnectionString("DefaultConnection"));
 
             services.AddMvc();
         }
