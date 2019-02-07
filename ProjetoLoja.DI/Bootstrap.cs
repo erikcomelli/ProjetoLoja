@@ -9,7 +9,7 @@ namespace ProjetoLoja.DI
     {
         public static void Configure(IServiceCollection services, string connection)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<ProjetoLojaDBContext>(options =>
                 options.UseSqlServer(connection));
 
 

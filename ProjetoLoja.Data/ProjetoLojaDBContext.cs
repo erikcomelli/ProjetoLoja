@@ -4,9 +4,9 @@ using System;
 
 namespace ProjetoLoja.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ProjetoLojaDBContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
+        public ProjetoLojaDBContext(DbContextOptions<ProjetoLojaDBContext> options): base(options)
         {
 
         }
