@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjetoLoja.Domain\ProjetoLoja.Domain.csproj" />
+    <ProjectReference Include="..\ProjetoLoja.Interfaces\ProjetoLoja.Interfaces.csproj" />
   </ItemGroup>
 
   <ItemGroup>

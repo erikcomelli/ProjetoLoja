@@ -4,9 +4,19 @@ using System.Text;
 
 namespace ProjetoLoja.Domain
 {
-    public class Category
+    public class Category : Entity
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; private set; }
+
+        public Category(string name)
+        {
+            //validate fields
+            SetCategory(name);
+        }
+
+        private void SetCategory(string name)
+        {
+            Name = name;
+        }
     }
 }
