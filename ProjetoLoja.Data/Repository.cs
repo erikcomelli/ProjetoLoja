@@ -16,14 +16,53 @@ namespace ProjetoLoja.Data
             _context = context;
         }
 
+        public bool Delete(TEntity entity)
+        {
+            try
+            {
+                _context.Set<TEntity>().Remove(entity);
+                return SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public IQueryable<TEntity> GetAll()
+        {
+            return _context.Set<TEntity>().AsQueryable();
+        }
+
         public TEntity GetById(int id)
         {
             return _context.Set<TEntity>().SingleOrDefault(e => e.Id == id);
         }
 
-        public void Save(TEntity entity)
+        public bool Insert(TEntity entity)
         {
-            _context.Set<TEntity>().Add(entity);
+            try
+            {
+                _context.Set<TEntity>().Add(entity);
+                return SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        public bool SaveChanges()
+        {
+            try
+            {
+                return _context.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

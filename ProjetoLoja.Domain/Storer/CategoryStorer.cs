@@ -1,9 +1,5 @@
 ﻿using ProjetoLoja.Domain.DTO;
 using ProjetoLoja.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 
 namespace ProjetoLoja.Domain.Storer
 {
@@ -22,7 +18,7 @@ namespace ProjetoLoja.Domain.Storer
             if (category == null)
             {
                 category = new Category(categoryDTO.Name);
-                _categoryRepository.Save(category);
+                _categoryRepository.Insert(category);
             }
             //else
                 //update category

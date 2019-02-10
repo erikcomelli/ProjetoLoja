@@ -25,7 +25,7 @@ namespace ProjetoLoja.Domain.Storer
             if (product == null)
             {
                 product = new Product(productDTO.Name, productDTO.Quantity, productDTO.Description, productDTO.Category, productDTO.Price);
-                _productRepository.Save(product);
+                _productRepository.Insert(product);
             }
             //else
                 //update
