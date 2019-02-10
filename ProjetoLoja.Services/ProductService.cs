@@ -1,23 +1,21 @@
-﻿using ProjetoLoja.Domain.DTO;
+﻿using ProjetoLoja.Domain;
+using ProjetoLoja.Domain.DTO;
 using ProjetoLoja.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ProjetoLoja.Domain.Storer
+namespace ProjetoLoja.Services
 {
-    public class ProductStorer
+    public class ProductService
     {
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<Category> _categoryRepository;
 
-        public ProductStorer(IRepository<Product> productRepository, IRepository<Category> categoryRepository)
+        public ProductService(IRepository<Product> productRepository, IRepository<Category> categoryRepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
         }
 
-        public void Store(ProductDTO productDTO)
+        public void Add(ProductDTO productDTO)
         {
             var category = _categoryRepository.GetById(productDTO.CategoryId);
 
@@ -28,7 +26,7 @@ namespace ProjetoLoja.Domain.Storer
                 _productRepository.Insert(product);
             }
             //else
-                //update
+            //update
         }
     }
 }

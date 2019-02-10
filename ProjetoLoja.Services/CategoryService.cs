@@ -1,18 +1,19 @@
-﻿using ProjetoLoja.Domain.DTO;
+﻿using ProjetoLoja.Domain;
+using ProjetoLoja.Domain.DTO;
 using ProjetoLoja.Interfaces;
 
-namespace ProjetoLoja.Domain.Storer
+namespace ProjetoLoja.Services
 {
-    public class CategoryStorer
+    public class CategoryService
     {
         private readonly IRepository<Category> _categoryRepository;
 
-        public CategoryStorer(IRepository<Category> categoryRepository)
+        public CategoryService(IRepository<Category> categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
 
-        public void Store(CategoryDTO categoryDTO)
+        public void Add(CategoryDTO categoryDTO)
         {
             var category = _categoryRepository.GetById(categoryDTO.Id);
             if (category == null)
@@ -21,7 +22,7 @@ namespace ProjetoLoja.Domain.Storer
                 _categoryRepository.Insert(category);
             }
             //else
-                //update category
+            //update category
         }
     }
 }

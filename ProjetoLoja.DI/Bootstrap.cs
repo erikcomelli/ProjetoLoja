@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProjetoLoja.Data;
-using ProjetoLoja.Domain.Storer;
 using ProjetoLoja.Interfaces;
-using System;
+using ProjetoLoja.Services;
 
 namespace ProjetoLoja.DI
 {
@@ -15,7 +14,7 @@ namespace ProjetoLoja.DI
                 options.UseSqlServer(connection));
 
             services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
-            services.AddSingleton(typeof(CategoryStorer));
+            services.AddSingleton(typeof(CategoryService));
 
 
         }
