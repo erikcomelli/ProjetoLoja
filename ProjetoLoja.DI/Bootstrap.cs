@@ -13,8 +13,8 @@ namespace ProjetoLoja.DI
             services.AddDbContext<ProjetoLojaDBContext>(options =>
                 options.UseSqlServer(connection));
 
-            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
-            services.AddSingleton(typeof(CategoryService));
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient(typeof(CategoryService));
 
 
         }
