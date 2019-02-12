@@ -8,6 +8,8 @@ namespace ProjetoLoja.Domain
     {
         public string Name { get; private set; }
 
+        public Category(){}
+
         public Category(string name)
         {
             //validate fields
