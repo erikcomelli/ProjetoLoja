@@ -1,12 +1,12 @@
 ﻿@model ProjetoLoja.Domain.DTO.CategoryDTO
 
 @{
-    ViewData["Title"] = "CreateOrEdit";
+    ViewData["Title"] = "Gerenciamento de Categorias";
 }
 
-<h2>CreateOrEdit</h2>
+<h2>Gerenciamento de Categorias</h2>
 
-<h4>CategoryDTO</h4>
+<h4>Categoria</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,21 +16,16 @@
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+            </div>            
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Cadastrar" class="btn  btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar a listagem de categorias</a>
 </div>
 
 @section Scripts {

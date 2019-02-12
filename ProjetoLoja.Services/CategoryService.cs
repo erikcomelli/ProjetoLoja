@@ -1,6 +1,8 @@
 ﻿using ProjetoLoja.Domain;
 using ProjetoLoja.Domain.DTO;
 using ProjetoLoja.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjetoLoja.Services
 {
@@ -23,6 +25,11 @@ namespace ProjetoLoja.Services
             }
             //else
             //update category
+        }
+
+        public IQueryable<Category> GetAll()
+        {
+            return _categoryRepository.GetAll();
         }
     }
 }

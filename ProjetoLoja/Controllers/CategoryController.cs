@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoLoja.Domain;
 using ProjetoLoja.Domain.DTO;
 using ProjetoLoja.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjetoLoja.Web.Controllers
-{    
+{
     public class CategoryController : Controller
     {
         private readonly CategoryService _categoryService;
@@ -20,19 +18,38 @@ namespace ProjetoLoja.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var categories =_categoryService.GetAll().ToList();
+            var categoriesDto = new List<CategoryDTO>();
+            foreach (var item in categories)
+            {
+                categoriesDto.Add(SetCategoryDTO(item));
+            }
+            return View(categoriesDto);
         }
 
         public IActionResult CreateOrEdit()
         {
-            _categoryService.Add(new CategoryDTO { Name = "categoryTest" });
+            
             return View();
         }
 
         [HttpPost]
         public IActionResult CreateOrEdit(CategoryDTO dto)
         {
+            if (ModelState.IsValid)
+            {
+                _categoryService.Add(new CategoryDTO { Name = dto.Name });
+            }            
             return View();
+        }
+
+        private CategoryDTO SetCategoryDTO(Category category)
+        {
+            return new CategoryDTO()
+            {
+                Id = category.Id,
+                Name = category.Name
+            };
         }
     }
 }
