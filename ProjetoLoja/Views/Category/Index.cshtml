@@ -4,7 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <div class="row line-height-60">
+        <div class="col-md-9"><h2>Categorias</h2></div>
+        <div class="col-md-3 align-right">
+            <button type="button" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("CreateOrEdit", "Category")'" />
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nova Categoria
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
 
 <div class="container">
     <br />
@@ -23,6 +35,6 @@
 </div>
 
 @section Scripts
-{
+    {
     <script src="~/js/category/index.js"></script>
 }

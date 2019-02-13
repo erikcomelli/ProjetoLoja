@@ -145,3 +145,11 @@
         background-color: #1ba964;
     }
 }
+
+.line-height-60{
+    line-height:60pt;
+}
+
+.align-right{
+    text-align:right;
+}
