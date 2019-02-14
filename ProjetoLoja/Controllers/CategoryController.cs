@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjetoLoja.Domain;
 using ProjetoLoja.Domain.DTO;
 using ProjetoLoja.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 
 namespace ProjetoLoja.Web.Controllers
 {
@@ -17,21 +16,10 @@ namespace ProjetoLoja.Web.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index()
-        {
-            //var categories =_categoryService.GetAll().ToList();
-            //var categoriesDto = new List<CategoryDTO>();
-            //foreach (var item in categories)
-            //{
-            //    categoriesDto.Add(SetCategoryDTO(item));
-            //}
-            //return View(categoriesDto);
-            return View();
-        }
+        public IActionResult Index() => View();        
 
         public IActionResult CreateOrEdit()
         {
-            
             return View();
         }
 
@@ -66,14 +54,14 @@ namespace ProjetoLoja.Web.Controllers
                 // getting all Customer data  
                 var customerData = _categoryService.GetAll();
                 //Sorting  
-                //if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDirection)))
-                //{
-                //    customerData = customerData.OrderBy(sortColumn + " " + sortColumnDirection);
-                //}
+                if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDirection)))
+                {
+                    customerData = customerData.OrderBy(sortColumn + " " + sortColumnDirection);
+                }
                 //Search  
                 if (!string.IsNullOrEmpty(searchValue))
                 {
-                    customerData = customerData.Where(m => m.Name == searchValue);
+                    customerData = customerData.Where(m => m.Name.Contains(searchValue.Trim()));
                 }
 
                 //total number of rows counts   
@@ -82,7 +70,6 @@ namespace ProjetoLoja.Web.Controllers
                 var data = customerData.Skip(skip).Take(pageSize).ToList();
                 //Returning Json Data  
                 return Json(new { draw, recordsFiltered = recordsTotal, recordsTotal, data });
-
             }
             catch (Exception)
             {

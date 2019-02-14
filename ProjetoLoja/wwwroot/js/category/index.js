@@ -6,26 +6,31 @@
         "oLanguage": { "sUrl": "../../lib/datatables/portuguese.txt" },
         "processing": true,
         "serverSide": true,
+        "pageLength": 10,
         "filter": true,
+        "order": [[1, "asc"]],
+        "ordering": true,
         "orderMulti": false,
+        "bLengthChange": false,
         "ajax": {
             "url": "Category/GetAllCategories",
             "type": "POST",
             "dataType": "json"
         },
-        "columnDefs": [
+        "columnDefs": [        
         //{
             //"targets": [0],
             //"visible": false,
             //"searcheble": false
         //},
+        { orderable: false, targets: [2,3] },
         {
             "className": "align-center", "targets": [0,2,3]
         }
         ],
         "columns": [
             { "data": "id", "name": "Id", "autoWidth": true },
-            { "data": "name", "name": "Nome", "autoWidth": true },
+            { "data": "name", "name": "Name", "autoWidth": true },
             {
                 "render": function (data, type, full, meta) {
                     return '<a class="btn  btn-outline btn-outline-secondary" href="/Category/CreateOrEdit/' + full.Id + '"><span class="glyphicon glyphicon-pencil"></span></a>';
