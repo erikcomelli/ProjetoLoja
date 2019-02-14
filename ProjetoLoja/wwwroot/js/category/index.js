@@ -1,4 +1,7 @@
 ﻿$(function () {
+
+    var selectedIdForExclusion = null;
+
     $("#categoriesDT").dataTable({
         "oLanguage": { "sUrl": "../../lib/datatables/portuguese.txt" },
         "processing": true,
@@ -29,20 +32,38 @@
                 }
             },
             {
-                data: null, render: function (data, type, row) {
-                    return "<a href='#' class='btn btn-outline btn-outline-secondary' onclick=ConfirmDelete('" + row.Id + "'); ><span class='glyphicon glyphicon-remove'></span></a>";
+                data: null, render: function (data, type, row) {                    
+                    return "<a href='#' class='btn btn-outline btn-outline-secondary btnDeleteCategory' id='btnDeleteCategory_"+row.id+"' ><span class='glyphicon glyphicon-remove'></span></a>";
                 }
             }
         ]
+    });    
+
+    $("body").on("click", ".btnDeleteCategory", function () {
+        selectedIdForExclusion = this.id;
+        $('#deleteCategoryModal').modal();
     });
 
-    function ConfirmDelete(id) {
-        //confirm if user wants to exclude data
-        Delete(id);
+    $("body").on("click", "#btnConfirmModal", function () {
+        selectedIdForExclusion = selectedIdForExclusion.split("_")[1];
+        $.post("Category/DeleteCategory", { categoryId: selectedIdForExclusion }, function (data) {
+            var returnMessage = data.response.message;
+            var success = data.response.success;
+            LoadMessageModal(success, returnMessage);
+        });
+    });   
+
+    function LoadMessageModal(success, message) {
+
+        $('#deleteCategoryModal').modal('toggle');
+        SetMessageModalMessage(message);
+        $("#messageModal").modal();
+        if (success)
+            $("#categoriesDT").DataTable().ajax.reload();
     }
 
-    function Delete(id) {
-        //call js to delete
+    function SetMessageModalMessage(message) {
+        $("#spanMessageModal").text(message);
     }
 
 });

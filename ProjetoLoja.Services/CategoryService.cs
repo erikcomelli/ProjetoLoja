@@ -31,5 +31,18 @@ namespace ProjetoLoja.Services
         {
             return _categoryRepository.GetAll();
         }
+
+        public Category GetById(int id)
+        {
+            return _categoryRepository.GetById(id);
+        }
+
+        public bool Delete(int id)
+        {
+            var category = _categoryRepository.GetById(id);
+            if (category!= null)
+                return _categoryRepository.Delete(category);
+            return false;
+        }
     }
 }

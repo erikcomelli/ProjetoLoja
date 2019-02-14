@@ -81,7 +81,7 @@ namespace ProjetoLoja.Web.Controllers
                 //Paging   
                 var data = customerData.Skip(skip).Take(pageSize).ToList();
                 //Returning Json Data  
-                return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data });
+                return Json(new { draw, recordsFiltered = recordsTotal, recordsTotal, data });
 
             }
             catch (Exception)
@@ -100,13 +100,22 @@ namespace ProjetoLoja.Web.Controllers
             return View();
         }
 
-        private CategoryDTO SetCategoryDTO(Category category)
-        {
-            return new CategoryDTO()
+        public IActionResult DeleteCategory(int categoryId)
+        {            
+            var returnMessage = "registro excluído";
+            var errorMessage = "erro ao excluir";
+            bool success = true;
+            try
             {
-                Id = category.Id,
-                Name = category.Name
-            };
-        }
+                success = _categoryService.Delete(categoryId);
+            }
+            catch(Exception)
+            {
+                success = false;
+            }
+            if (!success)
+                returnMessage = errorMessage;
+            return Json(new { response = new ResponseDTO(success,returnMessage) });
+        }                   
     }
 }
