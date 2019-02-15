@@ -1,5 +1,28 @@
 ﻿$(function () {
 
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-margin-top-center",
+        "preventDuplicates": false,
+        "showDuration": "300",
+        "hideDuration": "3000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
+    toastr.success('Sucesso');
+    toastr.info('Info');
+    toastr.warning('Atenção');
+    toastr.error('Erro!');
+
     var selectedIdForExclusion = null;
 
     $("#categoriesDT").dataTable({
