@@ -7,7 +7,7 @@ namespace ProjetoLoja.Domain.DTO
         [Display(Name = "Nome")]
         [Required(ErrorMessage ="O campo Nome é obrigatório")]
         [MaxLength(50)]
-        [MinLength(2, ErrorMessage = "Insira ao menos 3 caracteres")]
+        [MinLength(3, ErrorMessage = "Insira ao menos 3 caracteres")]
         public string Name { get; set; }
     }
 }

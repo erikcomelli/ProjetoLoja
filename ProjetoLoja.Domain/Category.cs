@@ -13,10 +13,10 @@ namespace ProjetoLoja.Domain
         public Category(string name)
         {
             //validate fields
-            SetCategory(name);
+            SetName(name);
         }
 
-        private void SetCategory(string name)
+        public void SetName(string name)
         {
             Name = name;
         }

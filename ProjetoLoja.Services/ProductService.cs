@@ -19,7 +19,7 @@ namespace ProjetoLoja.Services
         {
             var category = _categoryRepository.GetById(productDTO.CategoryId);
 
-            var product = _productRepository.GetById(productDTO.Id);
+            var product = _productRepository.GetById(productDTO.Id.Value);
             if (product == null)
             {
                 product = new Product(productDTO.Name, productDTO.Quantity, productDTO.Description, productDTO.Category, productDTO.Price);

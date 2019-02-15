@@ -17,14 +17,13 @@ namespace ProjetoLoja.Services
 
         public void Add(CategoryDTO categoryDTO)
         {
-            var category = _categoryRepository.GetById(categoryDTO.Id);
+            var category = _categoryRepository.GetById(categoryDTO.Id ?? 0);
             if (category == null)
-            {
                 category = new Category(categoryDTO.Name);
-                _categoryRepository.Insert(category);
-            }
-            //else
-            //update category
+            else
+                category.SetName(categoryDTO.Name);
+
+            _categoryRepository.Insert(category);            
         }
 
         public IQueryable<Category> GetAll()
@@ -32,9 +31,9 @@ namespace ProjetoLoja.Services
             return _categoryRepository.GetAll();
         }
 
-        public Category GetById(int id)
+        public CategoryDTO GetById(int? id)
         {
-            return _categoryRepository.GetById(id);
+            return ConvertCategoryToCategoryDTO(_categoryRepository.GetById(id.Value));
         }
 
         public bool Delete(int id)
@@ -43,6 +42,15 @@ namespace ProjetoLoja.Services
             if (category!= null)
                 return _categoryRepository.Delete(category);
             return false;
+        }
+
+        private CategoryDTO ConvertCategoryToCategoryDTO(Category category)
+        {
+            return new CategoryDTO
+            {
+                Id = category.Id,
+                Name = category.Name
+            };
         }
     }
 }

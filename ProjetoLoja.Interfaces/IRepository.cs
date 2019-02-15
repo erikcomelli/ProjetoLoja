@@ -6,7 +6,7 @@ namespace ProjetoLoja.Interfaces
     {
         IQueryable<TEntity> GetAll();
         TEntity GetById(int id);
-        bool Insert(TEntity entity);
+        bool Insert(TEntity entity);        
         bool SaveChanges();
         bool Delete(TEntity entity);
     }

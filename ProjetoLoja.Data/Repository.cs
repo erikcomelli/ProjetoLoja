@@ -43,7 +43,8 @@ namespace ProjetoLoja.Data
         {
             try
             {
-                _context.Set<TEntity>().Add(entity);
+                if (entity.Id==0)
+                    _context.Set<TEntity>().Add(entity);
                 return SaveChanges();
             }
             catch (Exception)
@@ -51,7 +52,6 @@ namespace ProjetoLoja.Data
                 return false;
             }
         }
-
 
         public bool SaveChanges()
         {
@@ -63,6 +63,6 @@ namespace ProjetoLoja.Data
             {
                 return false;
             }
-        }
+        }        
     }
 }
