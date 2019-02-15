@@ -11,15 +11,17 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreateOrEdit" id="formCategory">
+            <input type="hidden" asp-for="Id" id="hdnId" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
-            </div>            
+            </div>
             <div class="form-group">
                 <button type="submit" id="btnAddCategory" class="btn btn-outline btn-outline-success btn-lg">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Cadastrar
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <span id="btnAddCategoryText">Cadastrar</span>
                 </button>
                 <button type="button" id="btnBack" class="btn btn-outline btn-outline-secondary btn-lg" onclick="location.href='@Url.Action("Index", "Category")'">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar
@@ -31,4 +33,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/category/createOrEdit.js"></script>
 }

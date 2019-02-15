@@ -33,7 +33,7 @@
             { "data": "name", "name": "Name", "autoWidth": true },
             {
                 "render": function (data, type, full, meta) {
-                    return '<a class="btn  btn-outline btn-outline-secondary" href="/Category/CreateOrEdit/' + full.Id + '"><span class="glyphicon glyphicon-pencil"></span></a>';
+                    return '<a class="btn  btn-outline btn-outline-secondary" href="/Category/CreateOrEdit/' + full.id + '"><span class="glyphicon glyphicon-pencil"></span></a>';
                 }
             },
             {
