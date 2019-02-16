@@ -15,7 +15,7 @@ namespace ProjetoLoja.Services
             _categoryRepository = categoryRepository;
         }
 
-        public void Add(CategoryDTO categoryDTO)
+        public bool Add(CategoryDTO categoryDTO)
         {
             var category = _categoryRepository.GetById(categoryDTO.Id ?? 0);
             if (category == null)
@@ -23,7 +23,7 @@ namespace ProjetoLoja.Services
             else
                 category.SetName(categoryDTO.Name);
 
-            _categoryRepository.Insert(category);            
+            return _categoryRepository.Insert(category);            
         }
 
         public IQueryable<Category> GetAll()

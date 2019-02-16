@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ProjetoLoja.Domain.DTO;
 using ProjetoLoja.Services;
 using System;
@@ -16,29 +17,39 @@ namespace ProjetoLoja.Web.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index() => View();        
+        public IActionResult Index() => View();
 
         public IActionResult CreateOrEdit(int id)
         {
-            if (id>0)
+            if (id > 0)
             {
-                var category =_categoryService.GetById(id);
+                var category = _categoryService.GetById(id);
                 return View(category);
             }
             return View();
-        }        
+        }
 
         [HttpPost]
         public IActionResult CreateOrEdit(CategoryDTO dto)
         {
-            if (ModelState.IsValid)            
-                _categoryService.Add(dto);
-            
-            return View();
+            bool success = true;
+            if (ModelState.IsValid)
+                success = _categoryService.Add(dto);
+            if (success)
+            {
+                TempData["Response"] = JsonConvert.SerializeObject(new ResponseDTO(success, "operação realizada com sucesso"));
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["Response"] = JsonConvert.SerializeObject(new ResponseDTO(success, "erro na operação"));
+                return View();
+            }
+
         }
 
         public IActionResult DeleteCategory(int categoryId)
-        {            
+        {
             var returnMessage = "registro excluído";
             var errorMessage = "erro ao excluir";
             bool success = true;
@@ -46,13 +57,13 @@ namespace ProjetoLoja.Web.Controllers
             {
                 success = _categoryService.Delete(categoryId);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 success = false;
             }
             if (!success)
                 returnMessage = errorMessage;
-            return Json(new { response = new ResponseDTO(success,returnMessage) });
+            return Json(new { response = new ResponseDTO(success, returnMessage) });
         }
         public IActionResult GetAllCategories()
         {
