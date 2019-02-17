@@ -9,7 +9,7 @@ using System.Linq.Dynamic.Core;
 
 namespace ProjetoLoja.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "ADM")]
     [Route("[controller]/[action]")]
     public class CategoryController : Controller
     {
