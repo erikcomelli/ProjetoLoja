@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using ProjetoLoja.Domain.DTO;
 using ProjetoLoja.Services;
@@ -8,6 +9,8 @@ using System.Linq.Dynamic.Core;
 
 namespace ProjetoLoja.Web.Controllers
 {
+    [Authorize]
+    [Route("[controller]/[action]")]
     public class CategoryController : Controller
     {
         private readonly CategoryService _categoryService;
