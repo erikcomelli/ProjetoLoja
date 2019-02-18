@@ -147,8 +147,8 @@
 }
 
 
-.btn-outline {    
-    background-color: transparent;    
+.btn-outline {
+    background-color: transparent;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -410,7 +410,7 @@
 
 /*Toastr*/
 .toast-margin-top-center {
-    top: 38pt;    
+    top: 38pt;
     right: 0;
     width: 100%
 }
@@ -425,12 +425,39 @@
     opacity: 0.9 !important;
 }*/
 
+/*Datatables*/
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #1d945b;
+    border-color: #257b52;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #1d945b;
+}
+
+.paginate_button a:hover {
+    color: #1d945b !important;
+}
+
+.active a:hover {
+    color: #FFF !important;
+}
+
+.disabled a:hover {
+    color: #777 !important;
+}
+
+.pagination li a {
+    outline: none !important;
+}
 /*Site*/
 .line-height-60 {
     line-height: 60pt;
 }
-.align-center{
-    text-align:center;
+
+.align-center {
+    text-align: center;
 }
 
 .align-right {

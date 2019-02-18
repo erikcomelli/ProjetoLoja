@@ -9,8 +9,7 @@ using System.Linq.Dynamic.Core;
 
 namespace ProjetoLoja.Web.Controllers
 {
-    [Authorize(Roles = "ADM")]
-    [Route("[controller]/[action]")]
+    [Authorize(Roles = "ADM")]  
     public class CategoryController : Controller
     {
         private readonly CategoryService _categoryService;
@@ -21,7 +20,7 @@ namespace ProjetoLoja.Web.Controllers
         }
 
         public IActionResult Index() => View();
-
+        
         public IActionResult CreateOrEdit(int id)
         {
             if (id > 0)
