@@ -11,9 +11,10 @@ using System;
 namespace ProjetoLoja.Data.Migrations
 {
     [DbContext(typeof(ProjetoLojaDBContext))]
-    partial class ProjetoLojaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190218192455_propImagemProduto")]
+    partial class propImagemProduto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

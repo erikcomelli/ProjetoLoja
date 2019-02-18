@@ -22,7 +22,7 @@ namespace ProjetoLoja.Services
             var product = _productRepository.GetById(productDTO.Id.Value);
             if (product == null)
             {
-                product = new Product(productDTO.Name, productDTO.Quantity, productDTO.Description, productDTO.Category, productDTO.Price);
+                product = new Product(productDTO.Name, productDTO.Quantity, productDTO.Description, productDTO.Category, productDTO.Price, productDTO.ImageBase64);
                 _productRepository.Insert(product);
             }
             //else
