@@ -465,17 +465,22 @@
 }
 
 .imgProductDisplay {
-    margin:5pt 0 5pt 0;
+    margin: 5pt 0 5pt 0;
 }
 
-.productsContainer{
-    margin-top:20pt;
+.productsContainer {
+    margin-top: 20pt;
 }
 
-.productContainer{
-    cursor:pointer;
-    text-align:center;
+.productContainer {
+    cursor: pointer;
+    text-align: center;
 }
+
+    .productContainer:hover {
+        border-top: 2px solid beige;        
+    }
+
 
 .productName {
     text-align: center;
@@ -504,6 +509,6 @@
     margin: 5pt 0 5pt 0;
 }
 
-.btnBuyContainer{
-    margin:5pt 0 5pt 0;
+.btnBuyContainer {
+    margin: 5pt 0 5pt 0;
 }
